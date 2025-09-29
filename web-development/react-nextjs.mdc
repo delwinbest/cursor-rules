@@ -1,0 +1,103 @@
+---
+description: React and Next.js Development Rules
+globs:
+alwaysApply: true
+---
+
+# React and Next.js Development Rules
+
+## React Best Practices
+
+### Component Structure
+- Use functional components with TypeScript interfaces
+- Use declarative JSX
+- Use function, not const, for components
+- Place static content and interfaces at file end
+- Use content variables for static content outside render functions
+
+### Hooks and State Management
+- Minimize 'use client', 'useEffect', and 'setState'
+- Favor React Server Components (RSC) when possible
+- Use 'use client' only for Web API access in small components
+- Avoid using 'use client' for data fetching or state management
+- Implement optimistic updates for better UX
+
+### Performance Optimization
+- Use React.memo for expensive components
+- Implement useMemo/useCallback for expensive calculations
+- Optimize re-renders with proper dependency arrays
+- Use React DevTools Profiler to identify bottlenecks
+- Minimize state updates to prevent unnecessary re-renders
+
+## Next.js App Router
+
+### Server Components
+- Use React Server Components for data fetching when possible
+- Implement the preload pattern to prevent waterfalls
+- Model expected errors as return values
+- Avoid using try/catch for expected errors in Server Actions
+
+### Client Components
+- Wrap client components in Suspense with fallback
+- Use dynamic loading for non-critical components
+- Use error boundaries for unexpected errors
+- Implement error boundaries using error.tsx and global-error.tsx files
+
+### Forms and Validation
+- Use Zod for form validation
+- Use useActionState with react-hook-form for form validation
+- Use next-safe-action for all server actions
+- Implement type-safe server actions with proper validation
+
+### Image Optimization
+- Use WebP format when possible
+- Include size data for images
+- Implement lazy loading for images
+
+## Styling
+
+### Tailwind CSS
+- Use Tailwind CSS for styling, following the Utility First approach
+- Implement responsive design with Tailwind CSS
+- Use mobile-first approach for responsive design
+- Utilize the Class Variance Authority (CVA) for managing component variants
+
+### Component Libraries
+- Use Shadcn UI, Radix, and Tailwind CSS for components and styling
+- Break down components into smaller parts with minimal props
+- Suggest micro folder structure for components
+- Use composition to build complex components
+
+## Error Handling
+
+### Error Boundaries
+- Implement error boundaries for component isolation
+- Provide user-friendly error messages
+- Include development error details
+- Add recovery mechanisms where possible
+
+### Server Actions
+- Code in services/ dir always throw user-friendly errors
+- Handle errors gracefully and return appropriate responses
+- Use proper error logging and user-friendly error messages
+
+## Testing
+
+### Testing Strategy
+- Implement unit tests for utility functions and hooks
+- Use integration tests for complex components and pages
+- Implement end-to-end tests for critical user flows
+
+## Accessibility
+
+### Accessibility Guidelines
+- Ensure interfaces are keyboard navigable
+- Implement proper ARIA labels and roles for components
+- Ensure color contrast ratios meet WCAG standards for readability
+
+## Documentation
+
+### Code Documentation
+- Provide clear and concise comments for complex logic
+- Use JSDoc comments for functions and components to improve IDE intellisense
+- Keep the README files up-to-date with setup instructions and project overview

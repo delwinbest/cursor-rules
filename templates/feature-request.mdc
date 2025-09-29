@@ -1,0 +1,138 @@
+---
+description: Feature Request Template and Guidelines
+alwaysApply: true
+---
+
+# Feature Request Template
+
+## 🚀 Feature Description
+[Clear description of the requested feature]
+
+## 🎯 Problem/Use Case
+[What problem does this feature solve or what use case does it address?]
+
+## 💡 Proposed Solution
+[Detailed description of how the feature should work]
+
+## 🔄 Alternative Solutions
+[Other approaches that could solve the same problem]
+
+## 📋 Acceptance Criteria
+- [ ] Feature works as described
+- [ ] Feature integrates well with existing functionality
+- [ ] Feature follows project design patterns
+- [ ] Feature is accessible and responsive
+- [ ] Feature includes proper error handling
+- [ ] Feature is well documented
+
+## 🧪 Testing Requirements
+[How should this feature be tested?]
+
+## 📊 Impact Assessment
+- **User Impact**: [How will this affect users?]
+- **Development Effort**: [Estimated complexity and time]
+- **Breaking Changes**: [Will this require changes to existing code?]
+- **Dependencies**: [What other features or systems does this depend on?]
+
+## 🎨 Design Considerations
+- **UI/UX**: [How should this look and behave?]
+- **Accessibility**: [Accessibility requirements]
+- **Mobile**: [Mobile-specific considerations]
+- **Performance**: [Performance implications]
+
+## 📚 Documentation Requirements
+- [ ] Update README if needed
+- [ ] Add code comments
+- [ ] Update API documentation
+- [ ] Create user guide if applicable
+
+## 🔗 Related Information
+- **Priority**: High/Medium/Low
+- **Related Issues**: [Link to related issues or features]
+- **Dependencies**: [Other features this depends on]
+- **Timeline**: [When is this needed?]
+
+## Feature Request Guidelines
+
+### Before Submitting
+- **Search existing issues** to avoid duplicates
+- **Check project roadmap** to see if already planned
+- **Consider the scope** - is this a single feature or multiple?
+- **Think about edge cases** and error scenarios
+
+### Feature vs Enhancement
+- **New Feature**: Completely new functionality
+- **Enhancement**: Improvement to existing functionality
+- **Bug Fix**: Fixing broken functionality (use bug report template)
+
+### Priority Guidelines
+- **High**: Critical for project success, blocks other work
+- **Medium**: Important but not blocking, fits project timeline
+- **Low**: Nice to have, can be deferred
+
+### Implementation Planning
+1. **Create feature branch** from development: `feature/feature-name`
+2. **Break down into tasks** if complex
+3. **Implement incrementally** with frequent commits
+4. **Test thoroughly** at each step
+5. **Create PR** with comprehensive description
+
+## Example Feature Request
+
+### 🚀 Feature Description
+Add drag and drop functionality to the kanban board to allow users to move cards between columns and reorder cards within columns.
+
+### 🎯 Problem/Use Case
+Currently, users can only move cards by editing them and changing the column. This is inefficient for quick reorganization of tasks and doesn't provide the intuitive kanban experience users expect.
+
+### 💡 Proposed Solution
+Implement HTML5 drag and drop API with visual feedback:
+- Cards become draggable with cursor change
+- Drop zones highlight when dragging over valid targets
+- Smooth animations for card movement
+- Keyboard accessibility for drag operations
+- Optimistic updates with rollback on failure
+
+### 🔄 Alternative Solutions
+- Add "Move to Column" dropdown in card edit modal
+- Add keyboard shortcuts for moving cards
+- Add bulk selection and move functionality
+
+### 📋 Acceptance Criteria
+- [ ] Cards can be dragged between columns
+- [ ] Cards can be reordered within columns
+- [ ] Visual feedback during drag operations
+- [ ] Keyboard accessibility (Tab to select, Enter to move)
+- [ ] Optimistic updates with error handling
+- [ ] Works on mobile devices
+- [ ] Maintains card state during move
+
+### 🧪 Testing Requirements
+- Test drag and drop on desktop and mobile
+- Test keyboard navigation and accessibility
+- Test with multiple users simultaneously
+- Test error scenarios (network failures, invalid moves)
+- Test performance with large numbers of cards
+
+### 📊 Impact Assessment
+- **User Impact**: Significantly improves user experience and productivity
+- **Development Effort**: Medium complexity, estimated 2-3 weeks
+- **Breaking Changes**: None
+- **Dependencies**: None
+
+### 🎨 Design Considerations
+- **UI/UX**: Use subtle animations and clear visual feedback
+- **Accessibility**: Full keyboard support and screen reader compatibility
+- **Mobile**: Touch-friendly drag interactions
+- **Performance**: Efficient re-rendering during drag operations
+
+### 📚 Documentation Requirements
+- [ ] Update README with drag and drop instructions
+- [ ] Add accessibility documentation
+- [ ] Update API documentation if needed
+
+### 🔗 Related Information
+- **Priority**: High
+- **Related Issues**: #15, #23
+- **Dependencies**: None
+- **Timeline**: Q2 2024

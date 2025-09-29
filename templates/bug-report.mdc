@@ -1,0 +1,104 @@
+---
+description: Bug Report Template and Guidelines
+alwaysApply: true
+---
+
+# Bug Report Template
+
+## 🐛 Problem Statement
+[Clear description of the issue and current broken behavior]
+
+## 🔍 Root Cause Analysis
+[Technical analysis of the problem - what's causing the bug]
+
+## 🎯 Expected Behavior
+[What should happen when the feature works correctly]
+
+## 📋 Steps to Reproduce
+1. Step 1
+2. Step 2
+3. Step 3
+4. Observe the error/bug
+
+## 🧪 Testing Strategy
+[How to test the fix - what to verify]
+
+## 📋 Acceptance Criteria
+- [ ] Bug is fixed and no longer occurs
+- [ ] Existing functionality still works
+- [ ] No new bugs introduced
+- [ ] Code follows project standards
+
+## 🔗 Related Information
+- **Priority**: High/Medium/Low
+- **Affected Components**: [List components affected]
+- **Browser/Environment**: [If applicable]
+- **Screenshots**: [If applicable]
+- **Error Messages**: [If applicable]
+
+## Bug Classification Guidelines
+
+### Severity Levels
+- **Critical**: System crash, data loss, security vulnerability
+- **High**: Major functionality broken, significant user impact
+- **Medium**: Minor functionality issues, workarounds available
+- **Low**: Cosmetic issues, minor inconveniences
+
+### Bug vs Feature Request
+- **Bug**: Existing functionality that worked before but now fails
+- **NOT a bug**: New feature requests, test failures, build failures, or code improvements
+
+### Mandatory Bug Workflow
+1. **Create GitHub Issue FIRST** (before any code changes)
+2. **Use this template** with all required sections
+3. **Add appropriate labels** (`bug`, `priority-high/medium/low`)
+4. **Create fix branch** from development: `fix/issue-description`
+5. **Implement fix** with thorough testing
+6. **Commit with issue reference**: `Fixes #X`
+7. **Create PR** linking to the issue
+8. **Associate everything** - link PR to issue, use "Fixes #X" in commit
+
+### Enforcement Rules
+- **NEVER fix bugs directly on feature branches**
+- **NEVER commit bug fixes without creating an issue first**
+- **NEVER skip the GitHub issue creation step**
+- **ALWAYS use fix/* branch naming for bug fixes**
+- **ALWAYS link commits and PRs to the GitHub issue**
+
+## Example Bug Report
+
+### 🐛 Problem Statement
+The kanban board reloads the entire page when adding or removing cards, causing a poor user experience and losing scroll position.
+
+### 🔍 Root Cause Analysis
+The card operations are triggering a full page reload instead of using optimistic updates. The LoadingSpinner component is being re-rendered during card operations, causing the entire board to refresh.
+
+### 🎯 Expected Behavior
+Card operations should update the UI reactively without page reloads, maintaining scroll position and providing smooth user experience.
+
+### 📋 Steps to Reproduce
+1. Open the kanban board
+2. Scroll down to a column
+3. Click "Add Card" button
+4. Fill in card details and save
+5. Observe that the page reloads and scroll position is lost
+
+### 🧪 Testing Strategy
+- Test card creation, update, and deletion operations
+- Verify no page reloads occur
+- Check that scroll position is maintained
+- Ensure real-time updates work correctly
+- Test with multiple users simultaneously
+
+### 📋 Acceptance Criteria
+- [ ] Card operations update UI without page reload
+- [ ] Scroll position is maintained during operations
+- [ ] Real-time updates work correctly
+- [ ] No performance degradation
+- [ ] All existing functionality still works
+
+### 🔗 Related Information
+- **Priority**: High
+- **Affected Components**: Card components, Board component, LoadingSpinner
+- **Browser/Environment**: All browsers
+- **Related Issues**: #7
