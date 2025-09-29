@@ -694,6 +694,55 @@ git commit -m "your commit message"
 
 **Type checking failures are BLOCKING issues - do not commit until resolved.**
 
+### Developer Testing and Approval Process (MANDATORY)
+**CRITICAL: AI Assistant MUST NOT commit or push changes without explicit developer approval.**
+
+#### Testing Requirements
+1. **Local Testing**: All changes must be tested locally by the developer
+2. **Functionality Verification**: Developer must verify all features work as expected
+3. **Browser Testing**: Test in multiple browsers if applicable
+4. **Mobile Testing**: Verify responsive design works on mobile devices
+5. **Authentication Testing**: Test all auth flows (login, register, OAuth)
+6. **Error Handling**: Verify error states and edge cases
+
+#### Developer Approval Process
+**AI Assistant MUST:**
+- **NEVER commit changes** without explicit developer request
+- **NEVER push to remote** without explicit developer approval
+- **ALWAYS ask for permission** before any git operations
+- **WAIT for developer confirmation** after testing is complete
+
+**Developer MUST:**
+- **Test all changes thoroughly** before requesting commits
+- **Explicitly request commits** when satisfied with testing
+- **Explicitly request pushes** when ready to share changes
+- **Verify functionality** in the browser before approval
+
+#### Approval Workflow
+```bash
+# AI Assistant workflow:
+1. Make code changes
+2. Inform developer: "Changes complete. Please test locally."
+3. WAIT for developer to test
+4. WAIT for explicit request: "Please commit these changes"
+5. Only then: git add . && git commit -m "..."
+6. WAIT for explicit request: "Please push to remote"
+7. Only then: git push origin branch-name
+```
+
+#### Prohibited AI Actions
+- ❌ **NEVER** automatically commit after making changes
+- ❌ **NEVER** automatically push to remote repositories
+- ❌ **NEVER** assume developer approval without explicit request
+- ❌ **NEVER** proceed with git operations without developer confirmation
+- ❌ **NEVER** skip the testing and approval process
+
+#### Required Developer Phrases
+AI Assistant should only proceed with git operations when developer uses these explicit phrases:
+- **For commits**: "Please commit these changes" or "Go ahead and commit"
+- **For pushes**: "Please push to remote" or "Push the changes"
+- **For testing**: "I've tested the changes" or "Testing complete"
+
 ### Before Submitting PR
 - [ ] **Run linting**: `npm run lint`
 - [ ] **Type checking**: `npm run type-check` (MANDATORY - must pass before commit)
