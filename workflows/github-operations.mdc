@@ -61,6 +61,65 @@ alwaysApply: true
   Fixes #7 - Full page reload on card add/remove instead of reactive updates"
   ```
 
+### Commit Consolidation Strategy
+**CRITICAL: Consolidate small, non-complex changes to reduce commit noise.**
+
+#### When to Consolidate Commits
+- **Multiple small UI fixes** (spacing, styling, text changes)
+- **Related documentation updates** (README, TODO, comments)
+- **Minor refactoring** (variable renames, code formatting)
+- **Small bug fixes** that don't require separate tracking
+- **Configuration changes** (package.json, config files)
+
+#### Consolidation Guidelines
+1. **Group related changes** into logical commits:
+   ```bash
+   # Good: Consolidated UI improvements
+   git commit -m "style: Improve modal spacing and remove duplicate headings
+
+   - Reduce padding in card creation modal from p-6 to p-3
+   - Reduce margin after description from mb-6 to mb-2
+   - Remove duplicate 'Create New Card' heading in modal body
+   - Improve overall modal compactness and visual density"
+
+   # Bad: Multiple small commits
+   git commit -m "fix: Reduce modal padding"
+   git commit -m "fix: Reduce description margin"
+   git commit -m "fix: Remove duplicate heading"
+   ```
+
+2. **Use descriptive commit messages** that cover all changes:
+   - List all modifications in bullet points
+   - Explain the overall goal or theme
+   - Include context about why changes were made together
+
+3. **Timing for consolidation**:
+   - **Before pushing**: Review recent commits and consolidate if needed
+   - **During development**: Group related changes as you work
+   - **Before PR creation**: Ensure commit history is clean and logical
+
+#### When NOT to Consolidate
+- **Complex features** that should be tracked separately
+- **Bug fixes** that need individual issue tracking
+- **Breaking changes** that require separate documentation
+- **Security fixes** that need individual attention
+- **Performance optimizations** that should be measured independently
+
+#### Consolidation Tools
+```bash
+# Interactive rebase to combine commits
+git rebase -i HEAD~3
+
+# Amend the last commit with additional changes
+git add .
+git commit --amend --no-edit
+
+# Reset and recommit with consolidated changes
+git reset --soft HEAD~2
+git commit -m "consolidated: Description of all changes"
+```
+
+
 ### Pull Request Process
 1. **Create pull request** from feature branch to `development`
 2. **Link to GitHub issues** using `Fixes #X` or `Closes #X`
