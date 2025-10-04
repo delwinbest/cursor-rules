@@ -267,7 +267,7 @@ If `mcp_github_merge_pull_request` fails:
 ## Code Review Process
 
 ### Pre-Commit Checklist (MANDATORY)
-**ALWAYS run these commands before committing code:**
+**ALWAYS run these commands before committing code AND fix any errors or warnings that are identified:**
 ```bash
 # 1. Type checking (MUST PASS)
 npm run type-check
