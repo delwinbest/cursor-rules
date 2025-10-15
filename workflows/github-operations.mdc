@@ -136,28 +136,26 @@ git commit -m "consolidated: Description of all changes"
 6. **Create PR from `development` to `main`** for production deployment
 
 ### GitHub API Merge Instructions (MANDATORY)
-**CRITICAL: Always use GitHub API tools for PR operations.**
+**CRITICAL: NEVER automatically merge pull requests to allow GitHub tests and bugbot to run.**
 
 #### AI Assistant Merge Requirements
-- **ALWAYS use `mcp_github_merge_pull_request`** to merge pull requests
-- **NEVER suggest "manual merge"** or ask users to merge through web interface
-- **NEVER close unmerged pull requests** without merging them first
-- **ALWAYS merge complete and validated pull requests** immediately after validation
+- **NEVER automatically merge pull requests** - this bypasses automatic GitHub tests and bugbot
+- **ALWAYS create pull requests** and wait for manual review and approval
+- **NEVER use `mcp_github_merge_pull_request`** without explicit developer request
+- **ALWAYS inform developers** when PRs are ready for review and testing
 
 #### Merge Process for AI Assistant
-1. **Validate Changes**: Ensure PR passes quality checks and is thoroughly tested
-2. **Merge Immediately**: Use `mcp_github_merge_pull_request` with appropriate merge method
-   - `merge`: Standard merge (preserves commit history)
-   - `squash`: Squash commits into single commit (clean history)
-   - `rebase`: Rebase commits (linear history)
-3. **Update Issue Status**: Close linked issues automatically after successful merge
-4. **Clean Up**: Delete the merged branch both locally and remotely
+1. **Create Pull Request**: Use `mcp_github_create_pull_request` with comprehensive description
+2. **Wait for Review**: Allow GitHub Actions, tests, and bugbot to run against the PR
+3. **Inform Developer**: Notify when PR is ready for manual review and approval
+4. **Wait for Approval**: Only merge after explicit developer approval and confirmation
+5. **Manual Merge**: Use `mcp_github_merge_pull_request` only when developer explicitly requests it
 
 #### Prohibited Operations
-- ❌ **NEVER** tell users to "manually merge" or "navigate to GitHub web interface"
-- ❌ **NEVER** close PRs without merging valid changes
-- ❌ **NEVER** manually copy changes between branches using git commands
-- ❌ **NEVER** ask users to perform merge operations themselves
+- ❌ **NEVER** automatically merge PRs immediately after creation
+- ❌ **NEVER** bypass GitHub's automated testing and review processes
+- ❌ **NEVER** merge PRs without explicit developer approval
+- ❌ **NEVER** close PRs without merging when developer has approved them
 
 #### Error Handling for Merge Failures
 If `mcp_github_merge_pull_request` fails:
@@ -545,28 +543,26 @@ git commit -m "resolve: Merge conflicts in file.ts"
 6. **Create PR from `development` to `main`** for production deployment
 
 ### GitHub API Merge Instructions (MANDATORY)
-**CRITICAL: Always use GitHub API tools for PR operations.**
+**CRITICAL: NEVER automatically merge pull requests to allow GitHub tests and bugbot to run.**
 
 #### AI Assistant Merge Requirements
-- **ALWAYS use `mcp_github_merge_pull_request`** to merge pull requests
-- **NEVER suggest "manual merge"** or ask users to merge through web interface
-- **NEVER close unmerged pull requests** without merging them first
-- **ALWAYS merge complete and validated pull requests** immediately after validation
+- **NEVER automatically merge pull requests** - this bypasses automatic GitHub tests and bugbot
+- **ALWAYS create pull requests** and wait for manual review and approval
+- **NEVER use `mcp_github_merge_pull_request`** without explicit developer request
+- **ALWAYS inform developers** when PRs are ready for review and testing
 
 #### Merge Process for AI Assistant
-1. **Validate Changes**: Ensure PR passes quality checks and is thoroughly tested
-2. **Merge Immediately**: Use `mcp_github_merge_pull_request` with appropriate merge method
-   - `merge`: Standard merge (preserves commit history)
-   - `squash`: Squash commits into single commit (clean history)
-   - `rebase`: Rebase commits (linear history)
-3. **Update Issue Status**: Close linked issues automatically after successful merge
-4. **Clean Up**: Delete the merged branch both locally and remotely
+1. **Create Pull Request**: Use `mcp_github_create_pull_request` with comprehensive description
+2. **Wait for Review**: Allow GitHub Actions, tests, and bugbot to run against the PR
+3. **Inform Developer**: Notify when PR is ready for manual review and approval
+4. **Wait for Approval**: Only merge after explicit developer approval and confirmation
+5. **Manual Merge**: Use `mcp_github_merge_pull_request` only when developer explicitly requests it
 
 #### Prohibited Operations
-- ❌ **NEVER** tell users to "manually merge" or "navigate to GitHub web interface"
-- ❌ **NEVER** close PRs without merging valid changes
-- ❌ **NEVER** manually copy changes between branches using git commands
-- ❌ **NEVER** ask users to perform merge operations themselves
+- ❌ **NEVER** automatically merge PRs immediately after creation
+- ❌ **NEVER** bypass GitHub's automated testing and review processes
+- ❌ **NEVER** merge PRs without explicit developer approval
+- ❌ **NEVER** close PRs without merging when developer has approved them
 
 #### Error Handling for Merge Failures
 If `mcp_github_merge_pull_request` fails:
@@ -695,7 +691,7 @@ git commit -m "your commit message"
 **Type checking failures are BLOCKING issues - do not commit until resolved.**
 
 ### Developer Testing and Approval Process (MANDATORY)
-**CRITICAL: AI Assistant MUST NOT commit or push changes without explicit developer approval.**
+**CRITICAL: AI Assistant MUST ask for permission before committing changes after completing fixes or features.**
 
 #### Testing Requirements
 1. **Local Testing**: All changes must be tested locally by the developer
@@ -707,10 +703,11 @@ git commit -m "your commit message"
 
 #### Developer Approval Process
 **AI Assistant MUST:**
-- **NEVER commit changes** without explicit developer request
+- **ALWAYS ask if developer would like to commit changes** after completing a fix or feature phase
+- **NEVER automatically commit changes** - always request permission first
 - **NEVER push to remote** without explicit developer approval
-- **ALWAYS ask for permission** before any git operations
 - **WAIT for developer confirmation** after testing is complete
+- **Inform developer when changes are complete** and ask for next steps
 
 **Developer MUST:**
 - **Test all changes thoroughly** before requesting commits
@@ -722,11 +719,11 @@ git commit -m "your commit message"
 ```bash
 # AI Assistant workflow:
 1. Make code changes
-2. Inform developer: "Changes complete. Please test locally."
-3. WAIT for developer to test
-4. WAIT for explicit request: "Please commit these changes"
+2. Inform developer: "Changes complete. Would you like me to commit these changes?"
+3. WAIT for developer response and testing
+4. WAIT for explicit request: "Yes, please commit these changes" or "Please commit these changes"
 5. Only then: git add . && git commit -m "..."
-6. WAIT for explicit request: "Please push to remote"
+6. Ask: "Would you like me to push these changes to remote?"
 7. Only then: git push origin branch-name
 ```
 
